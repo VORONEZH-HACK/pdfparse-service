@@ -42,7 +42,7 @@ async def parse_resume(file: UploadFile = File(...)):
     doc = nlp(text)
 
     # name = ' '.join([entity.text for entity in doc.ents if entity.label_ == 'PERSON'])
-    name = re.findall(r'^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$')
+    name = re.findall(r'^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$', text)
     if name:
         res['name'] = name[0]
 
