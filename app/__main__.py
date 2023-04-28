@@ -32,6 +32,7 @@ async def shutdown_event():
 
 @app.post("/parse_resume/")
 async def parse_resume(file: UploadFile = File(...)):
+    print(file)
     with pdfplumber.open(file.file) as pdf:
         text = '\n'.join(page.extract_text() for page in pdf.pages)
 
