@@ -1,0 +1,8 @@
+uvicorn
+fastapi
+psycopg2-binary
+python-dotenv
+httpx
+python-multipart
+pdfplumber
+spacy
