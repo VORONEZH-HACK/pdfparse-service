@@ -5,8 +5,8 @@ import shutil
 import pdfplumber
 import spacy
 import uvicorn
-from app.iparser.iparser import ParserForResume
-from app.iparser.iparser.utils import translate
+from app.iparser import ParserForResume
+from app.iparser.utils import translate
 from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
