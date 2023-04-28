@@ -1,11 +1,9 @@
 from fastapi import FastAPI, UploadFile, File
-from datetime import date, datetimet
+
 
 import pdfplumber
 import spacy
 import uvicorn
-import asyncio
-import json
 import logging
 import re
 
