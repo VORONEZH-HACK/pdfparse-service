@@ -1,16 +1,10 @@
-from typing import Dict, Optional, List
 from fastapi import FastAPI, UploadFile, File
-from botocore.exceptions import NoCredentialsError
-from datetime import date, datetime
-from pydantic import BaseModel, constr, Field
-from sqlmodel import Session, select
-from uuid import UUID
+from datetime import date, datetimet
 
 import pdfplumber
 import spacy
 import uvicorn
 import asyncio
-import boto3
 import json
 import logging
 import re
