@@ -41,14 +41,17 @@ async def parse_resume(file: UploadFile = File(...)):
 
     doc = nlp(text)
 
-    name = ' '.join([entity.text for entity in doc.ents if entity.label_ == 'PERSON'])
-    log.info([entity.text for entity in doc.ents])
-    if len(name) > 3:
-        res['name'] = name
+    # name = ' '.join([entity.text for entity in doc.ents if entity.label_ == 'PERSON'])
+    name = re.findall(r'^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$')
+    if name:
+        res['name'] = name[0]
+
+    # log.info([entity.text for entity in doc.ents])
+    # if len(name) > 3:
     birth_date = re.findall(r'\d{2}[-/]\d{2}[-/]\d{4}', text)
     if birth_date:
         res['birth_date'] = birth_date
-    phone = re.findall(r'\+?\d{1,4}?[-. ]?\(?\d{1,3}?\)?[-. ]?\d{1,4}[-. ]?\d{1,9}', text)
+    phone = re.findall(r'^((\+7|7|8)+([0-9]){10})$', text)
     if phone:
         res['phone'] = phone[0]
     
