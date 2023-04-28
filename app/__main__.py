@@ -14,7 +14,8 @@ nlp = spacy.load("ru_core_news_sm")
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG
+    level=logging.DEBUG,
+    filename='logs.txt',
 )
 
 log = logging.getLogger(__name__)
@@ -50,7 +51,7 @@ async def parse_resume(file: UploadFile = File(...)):
     # if len(name) > 3:
     birth_date = re.findall(r'\d{2}[-/]\d{2}[-/]\d{4}', text)
     if birth_date:
-        res['birth_date'] = birth_date
+        res['birth_date'] = birth_date[0]
     phone = re.findall(r'^((\+7|7|8)+([0-9]){10})$', text)
     if phone:
         res['phone'] = phone[0]
