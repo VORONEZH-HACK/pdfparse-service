@@ -42,6 +42,7 @@ async def parse_resume(file: UploadFile = File(...)):
     doc = nlp(text)
 
     name = ' '.join([entity.text for entity in doc.ents if entity.label_ == 'PERSON'])
+    log.info([entity.text for entity in doc.ents])
     if len(name) > 3:
         res['name'] = name
     birth_date = re.findall(r'\d{2}[-/]\d{2}[-/]\d{4}', text)
