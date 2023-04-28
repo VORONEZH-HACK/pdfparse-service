@@ -7,7 +7,7 @@ WORKDIR $WORK_DIR
 
 COPY requirements.txt ./
 
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt && python -m spacy download ru_core_news_sm
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt && python -m spacy download en_core_web_sm && python -m nltk.downloader words && python -m nltk.downloader stopwords
 
 COPY ./app ./app
 
